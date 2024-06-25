@@ -25,16 +25,23 @@ class _TtossAppBarState extends State<TtossAppBar> {
           Image.asset("$basePath/icon/toss.png", height: 30,),
           Expanded(child: Container()),
           Image.asset("$basePath/icon/map_point.png", height: 30,),
-          Stack(
-            children: [
-              Image.asset(
-                "$basePath/icon/notification.png",
-                height: 30,
-              ),
-              if(_showRedDot) Positioned.fill(child: Align(alignment: Alignment.topRight,
-              child: Container(width: 6, height: 6, decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),),
-              ))
-            ],
+          Tap(
+            onTap: (){
+              setState(() {
+                _showRedDot = !_showRedDot;
+              });
+            },
+            child: Stack(
+              children: [
+                Image.asset(
+                  "$basePath/icon/notification.png",
+                  height: 30,
+                ),
+                if(_showRedDot) Positioned.fill(child: Align(alignment: Alignment.topRight,
+                child: Container(width: 6, height: 6, decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),),
+                ))
+              ],
+            ),
           ),
 
         ],
